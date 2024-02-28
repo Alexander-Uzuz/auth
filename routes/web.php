@@ -19,13 +19,18 @@ use App\Http\Controllers\User\SettingsController;
 
 Route::redirect('/', '/registration');
 
-Route::view('/registration', 'registration.index')->name('registration');
-Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
+Route::middleware('guest')->group(function () {
 
-Route::view('/login', 'login.index')->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+    Route::view('/registration', 'registration.index')->name('registration');
+    Route::post('/registration', [RegistrationController::class, 'store'])->name('registration.store');
 
-Route::redirect('/user', '/user/settings')->name('user');
-Route::get('/user/settings', [SettingsController::class, 'index'])->name('user.settings');
+    Route::view('/login', 'login.index')->name('login');
+    Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+});
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::redirect('/user', '/user/settings')->name('user');
+    Route::get('/user/settings', [SettingsController::class, 'index'])->name('user.settings');
+});
