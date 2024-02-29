@@ -14,6 +14,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
+        'online_at',
         'first_name',
         'middle_name',
         'last_name',
@@ -27,6 +28,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'online_at' => 'datetime',
         'password' => 'hashed',
     ];
 }
