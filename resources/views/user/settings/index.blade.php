@@ -6,4 +6,6 @@
             </h2>
         </div>
     </div>
+
+    @include('user.settings.profile')
 </x-layouts.user>
