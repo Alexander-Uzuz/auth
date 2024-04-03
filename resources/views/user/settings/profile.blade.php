@@ -16,7 +16,7 @@
             {{ $user->getFullName() }}
         </x-slot:value>
         <x-slot:action>
-            <x-link>
+            <x-link href="{{ route('user.settings.profile.edit') }}">
                 Изменить
             </x-link>
         </x-slot:action>
@@ -31,7 +31,7 @@
         </x-slot:value>
 
         <x-slot:action>
-            <x-link>
+            <x-link href="{{ route('user.settings.profile.edit') }}">
                 Изменить
             </x-link>
         </x-slot:action>
