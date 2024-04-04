@@ -21,6 +21,7 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
+        'password_at',
     ];
 
     protected $hidden = [
@@ -32,6 +33,7 @@ class User extends Authenticatable
         'gender' => GenderEnum::class,
         'online_at' => 'datetime',
         'password' => 'hashed',
+        'password_at' => 'datetime',
     ];
 
     public function getFullName(): string
@@ -39,5 +41,13 @@ class User extends Authenticatable
         return implode(' ', array_filter(
             [$this->first_name, $this->middle_name, $this->last_name],
         ));
+    }
+
+    public function updatePassword(string $password): bool
+    {
+        return $this->update([
+            'password' => $password,
+            'password_at' => now(),
+        ]);
     }
 }

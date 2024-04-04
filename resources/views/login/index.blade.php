@@ -8,7 +8,7 @@
             <x-form action="{{ route('login.store') }}" method="post">
                 <x-form.item>
                     <x-form.label>Ваш email</x-form.label>
-                    <x-form.text name="email" placeholder="mail@example.com" />
+                    <x-form.text name="email" placeholder="mail@example.com" autofocus />
                 </x-form.item>
 
                 <x-form.item>
