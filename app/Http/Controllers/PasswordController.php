@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PasswordStatusEnum;
 use App\Http\Requests\Password\StoreRequest;
 use App\Models\Password;
 use App\Models\User;
@@ -27,6 +28,7 @@ class PasswordController extends Controller
     public function edit(Password $password)
     {
         abort_unless($password->user_id, 404);
+        abort_unless($password->status->is(PasswordStatusEnum::class), 404);
 
         return view('password.edit', compact('password'));
     }
@@ -34,10 +36,13 @@ class PasswordController extends Controller
     public function update(Request $request, Password $password)
     {
         abort_unless($password->uuid, 404);
+        abort_unless($password->status->is(PasswordStatusEnum::class), 404);
+
 
         $user = $password->user;
         /**@var User */
         $user->updatePassword($request->input('password'));
+        $password->updateStatus(PasswordStatusEnum::completed);
 
         Auth::login($user);
 
