@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('last_name')->nullable()->comment('Фамилия');
             $table->string('gender', 10)->nullable()->comment('Пол');
 
-            $table->string('email')->unique();
+            $table->timestamp('email_at')->nullable();
+            $table->timestamp('email_confirmed_at')->nullable();
             $table->string('password');
             $table->timestamp('password_at')->nullable();
             $table->rememberToken();

@@ -19,7 +19,7 @@ class User extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
-        'email',
+        'email', 'email_confirmed_at',
         'password',
         'password_at',
     ];
@@ -31,6 +31,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'gender' => GenderEnum::class,
+        'email_confirmed_at' => 'datetime',
         'online_at' => 'datetime',
         'password' => 'hashed',
         'password_at' => 'datetime',
@@ -49,5 +50,10 @@ class User extends Authenticatable
             'password' => $password,
             'password_at' => now(),
         ]);
+    }
+
+    public function isEmailConfirmed(): bool
+    {
+        return (bool) $this->email_confirmed_at;
     }
 }
