@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Events\User\UserCreatedEvent;
 use App\Http\Requests\Registration\StoreRequest;
 
 class RegistrationController extends Controller
@@ -18,6 +19,8 @@ class RegistrationController extends Controller
         ]);
 
         $user = User::query()->create($data);
+
+        event(new UserCreatedEvent($user));
 
         Auth::login($user);
 
