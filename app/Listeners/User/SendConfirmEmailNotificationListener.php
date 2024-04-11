@@ -7,7 +7,7 @@ use App\Enums\EmailStatusEnum;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendConfirmEmailNotification implements ShouldQueue
+class SendConfirmEmailNotificationListener implements ShouldQueue
 {
     /**
      * Create the event listener.
