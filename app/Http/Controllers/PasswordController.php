@@ -28,7 +28,7 @@ class PasswordController extends Controller
     public function edit(Password $password)
     {
         abort_unless($password->user_id, 404);
-        abort_unless($password->status->is(PasswordStatusEnum::class), 404);
+        abort_unless($password->status->is(PasswordStatusEnum::pending), 404);
 
         return view('password.edit', compact('password'));
     }
@@ -36,7 +36,7 @@ class PasswordController extends Controller
     public function update(Request $request, Password $password)
     {
         abort_unless($password->uuid, 404);
-        abort_unless($password->status->is(PasswordStatusEnum::class), 404);
+        abort_unless($password->status->is(PasswordStatusEnum::pending), 404);
 
 
         $user = $password->user;
@@ -46,6 +46,6 @@ class PasswordController extends Controller
 
         Auth::login($user);
 
-        return to_route('login');
+        return to_route('user');
     }
 }

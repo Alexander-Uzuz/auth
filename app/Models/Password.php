@@ -6,7 +6,6 @@ use App\Enums\PasswordStatusEnum;
 use App\Traits\BelongsToUser;
 use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Password extends Model

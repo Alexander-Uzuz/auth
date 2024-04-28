@@ -8,7 +8,7 @@ enum PasswordStatusEnum: string
     case completed = 'completed';
     case expired = 'expired';
 
-    public function is(PasswordStatusEnum $status): bool
+    public function is(self $status): bool
     {
         return $this === $status;
     }
