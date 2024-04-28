@@ -12,3 +12,8 @@ function uuid(): string
 {
     return (string) Str::uuid();
 }
+
+function code(): string
+{
+    return (string) rand(100_000, 999_999);
+}
