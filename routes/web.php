@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\User\SettingsController;
 use App\Http\Middleware\EmailConfirmedMiddleware;
 use App\Http\Controllers\User\Settings\ProfileController;
@@ -53,3 +54,6 @@ Route::middleware(['auth', 'online'])->group(function () {
     Route::get('/user/settings/password', [UserPasswordController::class, 'edit'])->name('user.settings.password.edit');
     Route::post('/user/settings/password', [UserPasswordController::class, 'update'])->name('user.settings.password.update');
 });
+
+Route::get('/social/{driver}/redirect', [SocialController::class, 'redirect'])->name('social.redirect');
+Route::get('/social/{driver}/callback', [SocialController::class, 'callback'])->name('social.callback');

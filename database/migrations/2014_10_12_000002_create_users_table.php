@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('online_at')->nullable();
 
-            $table->string('first_name')->comment('Имя');
+            $table->string('first_name')->comment('Имя')->nullable();
             $table->string('middle_name')->nullable()->comment('Отчество');
             $table->string('last_name')->nullable()->comment('Фамилия');
             $table->string('gender', 10)->nullable()->comment('Пол');
