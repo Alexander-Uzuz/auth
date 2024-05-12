@@ -20,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
         UserCreatedEvent::class => [
             SendConfirmEmailNotificationListener::class,
         ],
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            // add your listeners (aka providers) here
+            'SocialiteProviders\\Zoho\\ZohoExtendSocialite@handle',
+        ],
     ];
 
     /**

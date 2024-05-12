@@ -10,7 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "^5.13",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "socialiteproviders/telegram": "^4.1",
+        "socialiteproviders/zoho": "^4.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.15",
